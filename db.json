@@ -1,32 +1,11 @@
 {
   "logs": [
     {
-      "id": 2,
-      "message": "Fixed hard drive on workstation 002",
-      "tech": "Cobra Man",
+      "id": 1,
+      "message": "Adithya is a good biy",
+      "tech": "Pink man Ornage naa",
       "attention": false,
-      "date": "2019-10-06T17:45:07.748Z"
-    },
-    {
-      "id": 3,
-      "message": "1122 wireless up",
-      "tech": "Sara Wilson",
-      "attention": false,
-      "date": "2019-10-06T17:41:59.932Z"
-    },
-    {
-      "id": 4,
-      "message": "Workstation 026 is up and running",
-      "attention": false,
-      "tech": "Sara Wilson",
-      "date": "2019-05-31T19:57:35.544Z"
-    },
-    {
-      "id": 5,
-      "message": "Able to understand Redux",
-      "tech": "Sara",
-      "attention": false,
-      "date": "2019-10-06T17:45:18.222Z"
+      "date": "2019-10-07T11:11:30.178Z"
     }
   ],
   "techs": [

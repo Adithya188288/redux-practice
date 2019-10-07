@@ -1,4 +1,6 @@
 import React from "react"
+import { deleteTech } from "../actions/techActions"
+import { connect } from "react-redux"
 import M from "materialize-css/dist/js/materialize.min.js"
 
 const TechItem = ({ tech: { id, firstName, lastName }, deleteTech }) => {
@@ -19,4 +21,7 @@ const TechItem = ({ tech: { id, firstName, lastName }, deleteTech }) => {
   )
 }
 
-export default TechItem
+export default connect(
+  null,
+  { deleteTech }
+)(TechItem)

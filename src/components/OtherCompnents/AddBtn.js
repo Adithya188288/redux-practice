@@ -1,6 +1,13 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { connect } from "react-redux"
+import { getTechs } from "../actions/techActions"
 
-const AddBtn = () => {
+const AddBtn = ({ getTechs }) => {
+  useEffect(() => {
+    getTechs()
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <div className="fixed-action-btn">
       <a
@@ -28,4 +35,7 @@ const AddBtn = () => {
   )
 }
 
-export default AddBtn
+export default connect(
+  null,
+  { getTechs }
+)(AddBtn)
