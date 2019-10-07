@@ -6,14 +6,17 @@ import {
   DELETE_LOG,
   SET_CURRENT,
   CLEAR_CURRENT,
-  UPDATE_LOG
+  UPDATE_LOG,
+  SEARCH_LOGS,
+  CLEAR_LOGS
 } from "../actions/actionTypes"
 
 const initialState = {
   logs: null,
   current: null,
   loading: false,
-  error: null
+  error: null,
+  filterLogs: null
 }
 
 const logReducer = (state = initialState, action) => {
@@ -53,6 +56,16 @@ const logReducer = (state = initialState, action) => {
       return {
         ...state,
         current: null
+      }
+    case SEARCH_LOGS:
+      return {
+        ...state,
+        filterLogs: action.payload
+      }
+    case CLEAR_LOGS:
+      return {
+        ...state,
+        filterLogs: null
       }
     case SET_LOADING:
       return {

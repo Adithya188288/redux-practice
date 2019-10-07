@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import SingleLog from "../Logs/SingleLog"
 import Spinner from "../Spinner/Spinner"
 import { connect } from "react-redux"
-import { getLogs } from "../actions/logAction"
+import { getLogs, searchLogs } from "../actions/logAction"
 
 function LogsList(props) {
   // //fucntional state for logs
@@ -16,6 +16,10 @@ function LogsList(props) {
     return <Spinner />
   }
 
+  const dataToLoad = props.logsData.filterLogs
+    ? props.logsData.filterLogs
+    : props.logsData.logs
+
   return (
     <div>
       <ul className="collection with-header">
@@ -25,7 +29,7 @@ function LogsList(props) {
         {!props.logsData.loading && props.logsData.logs.length === 0 ? (
           <p>No Logs </p>
         ) : (
-          props.logsData.logs.map(log => <SingleLog key={log.id} log={log} />)
+          dataToLoad.map(log => <SingleLog key={log.id} log={log} />)
         )}
       </ul>
     </div>
@@ -40,5 +44,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getLogs }
+  { getLogs, searchLogs }
 )(LogsList)

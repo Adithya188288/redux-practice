@@ -1,3 +1,4 @@
+import store from "../Store/store"
 import {
   GET_LOGS,
   SET_LOADING,
@@ -6,7 +7,9 @@ import {
   DELETE_LOG,
   SET_CURRENT,
   CLEAR_CURRENT,
-  UPDATE_LOG
+  UPDATE_LOG,
+  SEARCH_LOGS,
+  CLEAR_LOGS
 } from "../actions/actionTypes"
 
 export const getLogs = () => async dispatch => {
@@ -14,11 +17,11 @@ export const getLogs = () => async dispatch => {
     setLoading()
 
     const data = await fetch("http://localhost:5000/logs")
-    const jsonDate = await data.json()
+    const jsonData = await data.json()
 
     dispatch({
       type: GET_LOGS,
-      payload: jsonDate
+      payload: jsonData
     })
   } catch (error) {
     dispatch({
@@ -106,6 +109,25 @@ export const updateLog = log => async dispatch => {
       type: LOGS_ERROR,
       payload: error.response.data
     })
+  }
+}
+
+export const searchLogs = text => {
+  let currentLogsState = store.getState().log.logs
+
+  currentLogsState = currentLogsState.filter(log =>
+    log.message.toLowerCase().includes(text.toLowerCase())
+  )
+
+  return {
+    type: SEARCH_LOGS,
+    payload: currentLogsState
+  }
+}
+
+export const clearLogs = () => {
+  return {
+    type: CLEAR_LOGS
   }
 }
 
